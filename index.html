@@ -73,7 +73,6 @@
             max-width: 90%;
             line-height: 1.5;
             letter-spacing: 1px;
-            position: relative;
         }
 
         /* Delays for one-by-one appearance */
@@ -247,22 +246,6 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 
     <script>
-        function triggerSmoke(originY = 0.5) {
-            confetti({
-                particleCount: 80,
-                spread: 100,
-                origin: { y: originY },
-                colors: ['#ffffff', '#cccccc', '#aaaaaa', '#bbbbbb'],
-                gravity: 0.2,
-                scalar: 1.2,
-                drift: Math.random() * 4 - 2,
-                ticks: 150,
-                decay: 0.94,
-                startVelocity: 15,
-                shapes: ['circle']
-            });
-        }
-
         function triggerConfetti() {
             confetti({
                 particleCount: 300,
@@ -276,18 +259,12 @@
             });
         }
 
-        // Smoke effect when each text animation ends
-        document.querySelector('.text1').addEventListener('animationend', () => triggerSmoke(0.3));
-        document.querySelector('.text2').addEventListener('animationend', () => triggerSmoke(0.4));
-        document.querySelector('.text3').addEventListener('animationend', () => triggerSmoke(0.5));
-        document.querySelector('.text4').addEventListener('animationend', () => triggerSmoke(0.55));
-        document.querySelector('.text5').addEventListener('animationend', () => triggerSmoke(0.6));
-
-        // Confetti on load and button click
+        // Confetti on page load
         window.addEventListener('load', () => {
             setTimeout(triggerConfetti, 500);
         });
 
+        // Confetti on button click
         document.getElementById('confetti-btn').addEventListener('click', () => {
             triggerConfetti();
         });
